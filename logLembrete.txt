@@ -1,0 +1,1 @@
+`/public/register/login?email=${email}&password=${password}`
