@@ -28,7 +28,7 @@ type SpecialtiesObj = {
 const SpeacialtiesPage = () => {
   const [specialties, setSpecialties] = useState<SpecialtiesObj[]>([])
   const [isOpen, setIsOpen] = useState(false)
-  const [speacialty, setSpecialty] = useState<SpecialtiesObj | null>()
+  const [speacialty, setSpecialty] = useState<string>()
 
   //useEffect para carregar a informação quando o componente atualizar
   useEffect(() => {
@@ -45,7 +45,6 @@ const SpeacialtiesPage = () => {
     }
     fetchSpecialties()
   }, [])
-  console.log(specialties)
 
   const actionModal = () => {
     setIsOpen(!isOpen)
@@ -159,12 +158,12 @@ const SpeacialtiesPage = () => {
                 <small>Especialidade</small>
                 <input
                   type="text"
-                  value={''}
+                  value={speacialty}
                   onChange={event => setSpecialty(event.target.value)}
                 />
                 <div>
                   <label>Situação? </label>
-                  <input type="checkbox" name="status" id="" checked />
+                  <input type="checkbox" name="status" id="" />
                 </div>
                 <div>
                   <button onClick={() => alert(`you clicked in save button`)}>

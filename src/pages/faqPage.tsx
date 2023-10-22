@@ -3,9 +3,10 @@ import Header from '@/components/ui/header/header'
 import Menu from '@/components/ui/menu/menu'
 import SectionContent from '@/components/ui/sectionContent/sectionContent'
 import Table from '@/components/ui/table/table'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const FaqPage = () => {
+  const [data, setData] = useState()
   const getQuestions = async () => {
     try {
       const token = localStorage.getItem('token')
@@ -14,8 +15,6 @@ const FaqPage = () => {
           Authorization: `Bearer ${token}`
         }
       })
-      console.log(token)
-      console.log(res.data)
     } catch (error) {
       console.log(error + 'deu erro aqui no FAQ')
     }
