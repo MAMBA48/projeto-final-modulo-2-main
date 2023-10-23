@@ -117,7 +117,7 @@ const Dashboard = () => {
             <BackgroundImg>
               <img src="./static/images/greenBgOval.png" alt="" />
               <CharacterImg>
-                <img src="./static/images/imgs/character.png" alt="" />
+                <img src="./static/images/character.png" alt="" />
               </CharacterImg>
             </BackgroundImg>
             <Description>
