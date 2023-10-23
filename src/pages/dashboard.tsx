@@ -115,9 +115,9 @@ const Dashboard = () => {
         <CardArea>
           <GreetingCard>
             <BackgroundImg>
-              <img src="./src/assets/imgs/greenBgOval.png" alt="" />
+              <img src="./static/images/greenBgOval.png" alt="" />
               <CharacterImg>
-                <img src="./src/assets/imgs/character.png" alt="" />
+                <img src="./static/images/imgs/character.png" alt="" />
               </CharacterImg>
             </BackgroundImg>
             <Description>

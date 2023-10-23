@@ -8,7 +8,7 @@ export const Container = styled.main`
   display: flex;
   height: 100vh;
   width: 100vw;
-  background: url('/src/assets/imgs/BgLogin.png');
+  background: url('/static/images/BgLogin.png');
   background-size: cover;
   flex-direction: column;
   align-items: center;

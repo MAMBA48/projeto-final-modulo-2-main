@@ -61,7 +61,7 @@ const Menu = () => {
     <SideList id="side-list" className={style}>
       <ButtonMenu onClick={toggleSidebar}>|||</ButtonMenu>
       <div className="logo">
-        <img src="./src/assets/imgs/Frame.png" alt="logo" />
+        <img src="./static/images/Frame.png" alt="logo" />
       </div>
       <ul>
         <li onClick={toDashboard}>
