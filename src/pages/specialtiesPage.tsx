@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from '@/services/api'
 import Header from '@/components/ui/header/header'
 import Menu from '@/components/ui/menu/menu'
 import SectionContent from '@/components/ui/sectionContent/sectionContent'
@@ -25,9 +25,10 @@ type SpecialtiesObj = {
   enabled: boolean
 }
 
-const SpeacialtiesPage = () => {
+const SpecialtiesPage = () => {
   const [specialties, setSpecialties] = useState<SpecialtiesObj[]>([])
   const [isOpen, setIsOpen] = useState(false)
+  const [confirmModal, setConfirmModal] = useState(false)
   const [specialty, setSpecialty] = useState<SpecialtiesObj[]>([])
   const [editData, setEditData] = useState()
 
@@ -50,19 +51,33 @@ const SpeacialtiesPage = () => {
   const actionModal = () => {
     setIsOpen(!isOpen)
   }
+  console.log(specialties)
+  const dataUpdated = {
+    id: ''
+    //name: ''
+  }
+  //const [dataUpdated, setDataUpdated] = useState<string>()
   //axios put used to update datas
   const updateSpecialties = async () => {
     try {
       if (specialty) {
         console.log('its working')
-        await axios.put(`/specialties/${specialty}`, {
-          name: `${name} novo`
+        await api.put(`/specialties/`, {
+          name: `${specialty} novo`
         })
       }
+      console.log(`new info: ${specialty}`)
     } catch (error) {}
   }
-
-  const deleteData = async () => {}
+  const otherActionModal = () => {
+    setConfirmModal(!false)
+  }
+  const deleteData = async () => {
+    setConfirmModal(!false)
+    try {
+      await api.delete('/specialties/')
+    } catch (error) {}
+  }
 
   return (
     <main className="container">
@@ -126,7 +141,7 @@ const SpeacialtiesPage = () => {
                             <EditIcon />
                           </div>
                           <div
-                            onClick={() => {}}
+                            onClick={deleteData}
                             className="area-action-buttons"
                           >
                             <DeleteIcon />
@@ -160,6 +175,7 @@ const SpeacialtiesPage = () => {
                 <input
                   type="text"
                   value={specialty}
+                  placeholder={'example:'}
                   onChange={event => setSpecialty(event.target.value)}
                 />
                 <div>
@@ -175,7 +191,23 @@ const SpeacialtiesPage = () => {
           </ModalStyleEdit>
         </BackgroundModal>
       )}
+      {confirmModal && (
+        <BackgroundModal>
+          <ModalStyleEdit>
+            <div>
+              <span onClick={otherActionModal} className="close-modal-txt">
+                <p>fechar [X]</p>
+              </span>
+              <h3>Deseja realmente excluir este item?</h3>
+              <div>
+                <button onClick={deleteData}>Confirmar</button>
+                <button onClick={otherActionModal}>Cancelar</button>
+              </div>
+            </div>
+          </ModalStyleEdit>
+        </BackgroundModal>
+      )}
     </main>
   )
 }
-export default SpeacialtiesPage
+export default SpecialtiesPage

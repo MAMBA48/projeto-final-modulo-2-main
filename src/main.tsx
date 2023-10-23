@@ -11,8 +11,8 @@ import PlansPage from './pages/plansPage'
 import NotificationsPage from './pages/notificationsPage'
 import FaqPage from './pages/faqPage'
 import RegistedUsersPage from './pages/registeredUsers'
-import SpeacialtiesPage from './pages/specialtiesPage'
 import UserPage from './pages/userPage'
+import SpecialtiesPage from './pages/specialtiesPage'
 
 const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'plans', element: <PlansPage /> },
       { path: 'notifications', element: <NotificationsPage /> },
-      { path: 'specialties', element: <SpeacialtiesPage /> },
+      { path: 'specialties', element: <SpecialtiesPage /> },
       { path: 'faq', element: <FaqPage /> },
       { path: 'registeredusers', element: <RegistedUsersPage /> }
     ]
