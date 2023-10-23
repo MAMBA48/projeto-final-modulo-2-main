@@ -28,7 +28,8 @@ type SpecialtiesObj = {
 const SpeacialtiesPage = () => {
   const [specialties, setSpecialties] = useState<SpecialtiesObj[]>([])
   const [isOpen, setIsOpen] = useState(false)
-  const [speacialty, setSpecialty] = useState<string>()
+  const [specialty, setSpecialty] = useState<SpecialtiesObj[]>([])
+  const [editData, setEditData] = useState()
 
   //useEffect para carregar a informação quando o componente atualizar
   useEffect(() => {
@@ -50,18 +51,18 @@ const SpeacialtiesPage = () => {
     setIsOpen(!isOpen)
   }
   //axios put used to update datas
-  const updateSpecialties = async (name: SpecialtiesObj) => {
+  const updateSpecialties = async () => {
     try {
-      if (speacialty) {
+      if (specialty) {
         console.log('its working')
-        await axios.put(`/specialties/${speacialty.id}`, {
-          name: ''
+        await axios.put(`/specialties/${specialty}`, {
+          name: `${name} novo`
         })
       }
     } catch (error) {}
   }
 
-  const handleSave = () => {}
+  const deleteData = async () => {}
 
   return (
     <main className="container">
@@ -158,7 +159,7 @@ const SpeacialtiesPage = () => {
                 <small>Especialidade</small>
                 <input
                   type="text"
-                  value={speacialty}
+                  value={specialty}
                   onChange={event => setSpecialty(event.target.value)}
                 />
                 <div>
@@ -166,9 +167,7 @@ const SpeacialtiesPage = () => {
                   <input type="checkbox" name="status" id="" />
                 </div>
                 <div>
-                  <button onClick={() => alert(`you clicked in save button`)}>
-                    Salvar alterações
-                  </button>
+                  <button onClick={updateSpecialties}>Salvar alterações</button>
                   <button onClick={actionModal}>Cancelar</button>
                 </div>
               </div>
