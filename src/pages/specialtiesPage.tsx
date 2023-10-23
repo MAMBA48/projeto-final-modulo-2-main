@@ -52,6 +52,8 @@ const SpecialtiesPage = () => {
     setIsOpen(!isOpen)
   }
   console.log(specialties)
+
+  //passar os dados novos aqui para introdduzir no body
   const dataUpdated = {
     id: ''
     //name: ''
@@ -76,7 +78,9 @@ const SpecialtiesPage = () => {
     setConfirmModal(!false)
     try {
       await api.delete('/specialties/')
-    } catch (error) {}
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
