@@ -32,7 +32,7 @@ const SpecialtiesPage = () => {
   const [specialties, setSpecialties] = useState<SpecialtiesObj[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const [confirmModal, setConfirmModal] = useState(false)
-  const [specialty, setSpecialty] = useState<SpecialtiesObj[]>([])
+  const [specialty, setSpecialty] = useState<string>('')
   const [editData, setEditData] = useState()
   const navigate = useNavigate()
   const moveTo = () => {

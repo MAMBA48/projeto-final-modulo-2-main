@@ -21,11 +21,11 @@ export const getAllNotifications = async () => {
     console.log(error + 'erro em notificações')
   }
 }
-export const putNotifications = async ({ id, title, message }: FormatData) => {
+export const putNotifications = async ({}: FormatData) => {
   try {
     const token = localStorage.getItem('token')
     const res: AxiosResponse<FormatData> = await api.put(
-      `/notifications/${id}`,
+      `/notifications/${''}`,
       { id, title, message },
       {
         headers: {
