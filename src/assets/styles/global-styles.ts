@@ -68,13 +68,71 @@ export default createGlobalStyle`
     flex-direction: column;
     gap: 10px;
   }
+  .input-search {
+    all: unset;
+    min-width: 330px;
+    padding: 10px;
+  }
+
+`
+export const SectionChildren = styled.section`
+  padding: 20px;
+`
+export const ButtonStyle = styled.button`
+  display: flex;
+  margin-top: 40px;
+  cursor: pointer;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  background: #046639;
+  height: auto;
+  width: 350px;
+  padding: 12px;
 `
 export const SearchArea = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  border: 1px solid red;
+  border: 1px solid #f5f5f5;
+  border-radius: 10px;
+`
+export const NewSpecialityArea = styled.div`
+  display: flex;
+  gap: 20px;
+  max-width: 450px;
+`
+export const SituationArea = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`
+export const ToBackButtonArea = styled.div`
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: 20px;
+`
+export const ButtonSearchArea = styled.div`
+  display: flex;
+  padding-right: 10px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+`
+export const FilterArea = styled.div`
+  display: flex;
+  margin-left: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 10px;
 `
 export const BackgroundModal = styled.div`
   display: flex;
@@ -96,7 +154,7 @@ export const ButtonAddItem = styled.div`
   background: #00c247;
   align-items: center;
 `
-export const ModalStyleEdit = styled.span`
+export const ModalStyle = styled.span`
   height: auto;
   min-width: 450px;
   padding: 30px;

@@ -6,10 +6,12 @@ import {
   StyleTable,
   Container,
   AreaIcons,
-  ModalStyleEdit,
+  ModalStyle,
   BackgroundModal,
   ButtonAddItem,
-  SearchArea
+  SearchArea,
+  ButtonSearchArea,
+  FilterArea
 } from '@/assets/styles/global-styles'
 import { getAllSpeacialties } from '@/services/specialties'
 import { useEffect, useState } from 'react'
@@ -18,6 +20,7 @@ import DeleteIcon from '@/components/ui/icons/deleteIcon'
 import LookIcon from '@/components/ui/icons/lookIcon'
 import SearchIcon from '@/components/ui/icons/searchIcon'
 import FilterIcon from '@/components/ui/icons/filterIcon'
+import { useNavigate } from 'react-router-dom'
 
 type SpecialtiesObj = {
   id: number
@@ -31,7 +34,10 @@ const SpecialtiesPage = () => {
   const [confirmModal, setConfirmModal] = useState(false)
   const [specialty, setSpecialty] = useState<SpecialtiesObj[]>([])
   const [editData, setEditData] = useState()
-
+  const navigate = useNavigate()
+  const moveTo = () => {
+    navigate('/newspeciality')
+  }
   //useEffect para carregar a informação quando o componente atualizar
   useEffect(() => {
     const fetchSpecialties = async () => {
@@ -98,18 +104,29 @@ const SpecialtiesPage = () => {
                 margin: '10px'
               }}
             >
-              <SearchArea>
-                <div style={{ display: 'flex' }}>
-                  <input type="search" />
-                  <div>
-                    <SearchIcon />
+              <div style={{ display: 'flex' }}>
+                <SearchArea>
+                  <div style={{ display: 'flex' }}>
+                    <input
+                      id="input-search"
+                      type="search"
+                      className="input-search"
+                      placeholder="Pesquise uma palavra-chave"
+                    />
+                    <ButtonSearchArea>
+                      <div>
+                        <SearchIcon />
+                      </div>
+                    </ButtonSearchArea>
                   </div>
-                </div>
-                <div>
-                  <FilterIcon />
-                </div>
-              </SearchArea>
-              <ButtonAddItem>
+                </SearchArea>
+                <FilterArea>
+                  <div onClick={() => {}}>
+                    <FilterIcon />
+                  </div>
+                </FilterArea>
+              </div>
+              <ButtonAddItem onClick={moveTo}>
                 <p>+ Nova especialidade</p>
               </ButtonAddItem>
             </nav>
@@ -168,7 +185,7 @@ const SpecialtiesPage = () => {
       </SectionContent>
       {isOpen && (
         <BackgroundModal>
-          <ModalStyleEdit>
+          <ModalStyle>
             <div>
               <span onClick={actionModal} className="close-modal-txt">
                 <p>fechar [X]</p>
@@ -192,12 +209,12 @@ const SpecialtiesPage = () => {
                 </div>
               </div>
             </div>
-          </ModalStyleEdit>
+          </ModalStyle>
         </BackgroundModal>
       )}
       {confirmModal && (
         <BackgroundModal>
-          <ModalStyleEdit>
+          <ModalStyle>
             <div>
               <span onClick={otherActionModal} className="close-modal-txt">
                 <p>fechar [X]</p>
@@ -208,7 +225,7 @@ const SpecialtiesPage = () => {
                 <button onClick={otherActionModal}>Cancelar</button>
               </div>
             </div>
-          </ModalStyleEdit>
+          </ModalStyle>
         </BackgroundModal>
       )}
     </main>

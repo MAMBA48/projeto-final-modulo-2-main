@@ -56,6 +56,10 @@ export const FieldSet = styled.fieldset`
     border: none;
     width: 100%;
   }
+  & legend {
+    padding: 4px;
+    margin-left: 8px;
+  }
 `
 
 const LoginPage = () => {
@@ -66,12 +70,10 @@ const LoginPage = () => {
   const navigate = useNavigate()
 
   const doLogin = async () => {
-    //retorno booleano true or false
     console.log('antes da promise')
     const res = await login(email, password)
     console.log(res)
     //fazer o redirecionamento de tela
-    //const navigate = useNavigate()
     if (res) {
       navigate('/dashboard')
     } else {

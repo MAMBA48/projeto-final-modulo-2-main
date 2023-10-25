@@ -1,13 +1,40 @@
+import { AxiosResponse } from 'axios'
 import api from './api'
+
+type FormatData = PaginationType & {
+  content: {
+    id: number
+    title: string
+    message: string
+    type?: string
+  }[]
+}
 
 export const getAllNotifications = async () => {
   try {
     const token = localStorage.getItem('token')
-    const res = await api.get('/notifications', {
+    const res: AxiosResponse<FormatData> = await api.get('/notifications', {
       headers: { Authorization: `Bearer ${token}` }
     })
     return res.data
   } catch (error) {
     console.log(error + 'erro em notificações')
+  }
+}
+export const putNotifications = async ({ id, title, message }: FormatData) => {
+  try {
+    const token = localStorage.getItem('token')
+    const res: AxiosResponse<FormatData> = await api.put(
+      `/notifications/${id}`,
+      { id, title, message },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    )
+    return res.data.content
+  } catch (error) {
+    console.error()
   }
 }

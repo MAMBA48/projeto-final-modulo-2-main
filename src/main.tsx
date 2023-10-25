@@ -13,6 +13,7 @@ import FaqPage from './pages/faqPage'
 import RegistedUsersPage from './pages/registeredUsers'
 import UserPage from './pages/userPage'
 import SpecialtiesPage from './pages/specialtiesPage'
+import NewSpecialtiesPage from './pages/newSpecialties'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: 'plans', element: <PlansPage /> },
       { path: 'notifications', element: <NotificationsPage /> },
       { path: 'specialties', element: <SpecialtiesPage /> },
+      { path: 'newspeciality', element: <NewSpecialtiesPage /> },
       { path: 'faq', element: <FaqPage /> },
       { path: 'registeredusers', element: <RegistedUsersPage /> }
     ]
