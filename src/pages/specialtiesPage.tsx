@@ -33,7 +33,7 @@ const SpecialtiesPage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [confirmModal, setConfirmModal] = useState(false)
   const [specialty, setSpecialty] = useState<string>('')
-  const [editData, setEditData] = useState()
+  const [editData, setEditData] = useState<string>('')
   const navigate = useNavigate()
   const moveTo = () => {
     navigate('/newspeciality')
@@ -60,21 +60,17 @@ const SpecialtiesPage = () => {
   console.log(specialties)
 
   //passar os dados novos aqui para introdduzir no body
-  const dataUpdated = {
-    id: ''
-    //name: ''
-  }
   //const [dataUpdated, setDataUpdated] = useState<string>()
   //axios put used to update datas
   const updateSpecialties = async () => {
     try {
-      if (specialty) {
+      if (editData) {
         console.log('its working')
-        await api.put(`/specialties/`, {
-          name: `${specialty} novo`
+        await api.put(`/specialties/${id}`, {
+          name: `${editData} novo`
         })
       }
-      console.log(`new info: ${specialty}`)
+      console.log(`new info: ${editData}`)
     } catch (error) {}
   }
   const otherActionModal = () => {
@@ -195,9 +191,9 @@ const SpecialtiesPage = () => {
                 <small>Especialidade</small>
                 <input
                   type="text"
-                  value={specialty}
+                  value={editData}
                   placeholder={'example:'}
-                  onChange={event => setSpecialty(event.target.value)}
+                  onChange={event => setEditData(event.target.value)}
                 />
                 <div>
                   <label>Situação? </label>

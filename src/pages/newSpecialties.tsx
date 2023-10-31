@@ -18,6 +18,8 @@ import { FormEvent, useState } from 'react'
 
 const NewSpecialtiesPage = () => {
   const [actionModal, setActionModal] = useState(false)
+  const [newSpecialty, setNewSpecialty] = useState<string>('')
+  const [postSpecialty, setPostSpecialty] = useState<string>('')
   const navigate = useNavigate()
   const moveTo = () => {
     navigate('/specialties')

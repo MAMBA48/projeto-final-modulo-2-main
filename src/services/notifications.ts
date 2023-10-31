@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios'
 import api from './api'
+import { useEffect } from 'react'
 
 type FormatData = PaginationType & {
   content: {
@@ -19,22 +20,5 @@ export const getAllNotifications = async () => {
     return res.data
   } catch (error) {
     console.log(error + 'erro em notificações')
-  }
-}
-export const putNotifications = async ({}: FormatData) => {
-  try {
-    const token = localStorage.getItem('token')
-    const res: AxiosResponse<FormatData> = await api.put(
-      `/notifications/${''}`,
-      { id, title, message },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    )
-    return res.data.content
-  } catch (error) {
-    console.error()
   }
 }

@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios'
 import {
   AreaIcons,
   ButtonAddItem,
@@ -14,7 +15,7 @@ import LookIcon from '@/components/ui/icons/lookIcon'
 import SearchIcon from '@/components/ui/icons/searchIcon'
 import Menu from '@/components/ui/menu/menu'
 import SectionContent from '@/components/ui/sectionContent/sectionContent'
-import { getAllNotifications, putNotifications } from '@/services/notifications'
+import { getAllNotifications } from '@/services/notifications'
 import { useEffect, useState } from 'react'
 
 type NotificationsType = {
@@ -27,6 +28,8 @@ type NotificationsType = {
 const NotificationsPage = () => {
   //passando os dados da api ja tipados no state
   const [notifications, setNotifications] = useState<NotificationsType>()
+  const [putTitle, setPutTitle] = useState()
+  const [putMessage, setPutMessage] = useState()
   const fetchNotifications = async () => {
     const res = await getAllNotifications()
     setNotifications(res?.content ?? [])
@@ -34,6 +37,26 @@ const NotificationsPage = () => {
   useEffect(() => {
     fetchNotifications()
   }, [])
+
+  const putNotifications = async () => {
+    try {
+      const token = localStorage.getItem('token')
+      const res: AxiosResponse<NotificationsType> = await api.put(
+        `/notifications/${'id'}`,
+        {
+          /**passar os dados no body aqui */
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      return res.data.content
+    } catch (error) {
+      console.error()
+    }
+  }
   return (
     <main className="container">
       <Menu />
