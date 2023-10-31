@@ -20,15 +20,18 @@ import DeleteIcon from '@/components/ui/icons/deleteIcon'
 import LookIcon from '@/components/ui/icons/lookIcon'
 import SearchIcon from '@/components/ui/icons/searchIcon'
 import FilterIcon from '@/components/ui/icons/filterIcon'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 type SpecialtiesObj = {
-  id: number
+  id?: number
   name: string
   enabled: boolean
 }
 
 const SpecialtiesPage = () => {
+  //const params = useParams(`/specialties/:id`)
+  //destruct dos parametros
+  const { id } = useParams()
   const [specialties, setSpecialties] = useState<SpecialtiesObj[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const [confirmModal, setConfirmModal] = useState(false)
@@ -79,7 +82,7 @@ const SpecialtiesPage = () => {
   const deleteData = async () => {
     setConfirmModal(!false)
     try {
-      await api.delete('/specialties/')
+      await api.delete(`/specialties/${id}`)
     } catch (error) {
       console.error(error)
     }

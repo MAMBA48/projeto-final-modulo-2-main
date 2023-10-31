@@ -15,14 +15,36 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { FieldSet } from './loginPage'
 import { FormEvent, useState } from 'react'
+import api from '@/services/api'
 
 const NewSpecialtiesPage = () => {
   const [actionModal, setActionModal] = useState(false)
-  const [newSpecialty, setNewSpecialty] = useState<string>('')
+  const [postSituation, setPostSituation] = useState<string>('')
   const [postSpecialty, setPostSpecialty] = useState<string>('')
   const navigate = useNavigate()
   const moveTo = () => {
     navigate('/specialties')
+  }
+  //armazenar dados
+  const handleSpecialty = event => {
+    setPostSpecialty(event.target.value)
+    console.log(postSpecialty)
+  }
+  //salvar em objetos
+  const SaveSpecialty = {
+    postSpecialty
+  }
+  //fazer o envio para API
+  const postNewSpecialty = async () => {
+    const token = localStorage.getItem('token')
+    try {
+      await api.post(`/specialties`, SaveSpecialty, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      console.log('Nova especialidade salva com sucesso!')
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const saveNewSpeciality = (e: FormEvent) => {
@@ -32,6 +54,7 @@ const NewSpecialtiesPage = () => {
       setActionModal(actionModal)
     }, 3000)
   }
+  console.log()
   return (
     <main className="container">
       <Menu />
@@ -49,7 +72,12 @@ const NewSpecialtiesPage = () => {
             <NewSpecialityArea>
               <FieldSet>
                 <legend>Nome</legend>
-                <input type="text" placeholder="ex: nome especialidade" />
+                <input
+                  type="text"
+                  placeholder="ex: nome especialidade"
+                  onChange={handleSpecialty}
+                  value={postSpecialty}
+                />
               </FieldSet>
               <div>
                 <small>Situação</small>

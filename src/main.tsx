@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       { path: 'plans', element: <PlansPage /> },
       { path: 'notifications', element: <NotificationsPage /> },
       { path: 'specialties', element: <SpecialtiesPage /> },
+      { path: 'specialties/:id', element: <SpecialtiesPage /> },
       { path: 'newspeciality', element: <NewSpecialtiesPage /> },
       { path: 'faq', element: <FaqPage /> },
       { path: 'registeredusers', element: <RegistedUsersPage /> }
