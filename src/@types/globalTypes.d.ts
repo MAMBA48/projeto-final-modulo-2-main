@@ -7,7 +7,7 @@ type dashboardTypeData = {
   available: number
   unavailable: number
 }
-type plansTypeData = {
+type PlansTypeData = {
   token: string
   enabled: boolean
   id: number

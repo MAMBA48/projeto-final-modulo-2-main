@@ -60,6 +60,7 @@ const SpecialtiesPage = () => {
   const actionModal = () => {
     setIsOpen(!isOpen)
   }
+
   console.log(specialties)
 
   //passar os dados novos aqui para introdduzir no body
@@ -80,7 +81,6 @@ const SpecialtiesPage = () => {
     setConfirmModal(!false)
   }
   const deleteData = async () => {
-    setConfirmModal(!false)
     try {
       await api.delete(`/specialties/${id}`)
     } catch (error) {
@@ -155,7 +155,7 @@ const SpecialtiesPage = () => {
                             <LookIcon />
                           </div>
                           <div
-                            onClick={actionModal}
+                            onClick={() => {}}
                             className="area-action-buttons"
                           >
                             <EditIcon />
@@ -186,7 +186,7 @@ const SpecialtiesPage = () => {
         <BackgroundModal>
           <ModalStyle>
             <div>
-              <span onClick={actionModal} className="close-modal-txt">
+              <span onClick={() => {}} className="close-modal-txt">
                 <p>fechar [X]</p>
               </span>
               <h3>Editar especialidade</h3>
@@ -215,7 +215,7 @@ const SpecialtiesPage = () => {
         <BackgroundModal>
           <ModalStyle>
             <div>
-              <span onClick={otherActionModal} className="close-modal-txt">
+              <span onClick={() => {}} className="close-modal-txt">
                 <p>fechar [X]</p>
               </span>
               <h3>Deseja realmente excluir este item?</h3>
